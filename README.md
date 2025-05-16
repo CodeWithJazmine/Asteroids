@@ -11,7 +11,6 @@ This project was developed as a solo challenge to reinforce core Python concepts
 - Thrust forward with the **up arrow key**
 - Fire shots with the **spacebar**
 - Avoid and destroy the asteroids to survive!
-- (Win condition not implemented yet)
 
 
 
@@ -56,7 +55,7 @@ python main.py
 
 - [ ] Add a scoring system
 - [ ] Multiple lives with respawning
-- [ ] UI elements for win/loss conditions
+- [ ] UI elements for score and lose condition
 
 ### Boot.dev Project
 Built as part of a Python coding challenge on [Boot.dev](https://boot.dev/).
