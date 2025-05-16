@@ -1,17 +1,29 @@
 # This is the main file for the Asteroids game
 import pygame
 from constants import *
-from player import *
+from player import Player
+from asteroid import Asteroid
+from asteroidfield import  AsteroidField
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
-    dt = 0
+    
     updatables = pygame.sprite.Group()
     drawables = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+    asteroidfielda = pygame.sprite.Group()
+
     Player.containers = (updatables, drawables)
     player = Player(SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2)
+    
+    Asteroid.containers = (asteroids, updatables, drawables)
+    AsteroidField.containers = (updatables)
+    asteroidfield = AsteroidField()
+
+    dt = 0
+
     
     while True:
         for event in pygame.event.get():
