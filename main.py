@@ -3,20 +3,20 @@ import pygame
 from constants import *
 
 def main():
-    # Initialize the pygame library
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    while 1:
+    Clock = pygame.time.Clock()
+    dt = 0
+    
+    while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
             
-        screen.fill("black") # Fill the screen with black
+        screen.fill("black")
         pygame.display.flip() # Refresh the screen
+        dt = Clock.tick(60) / 1000
 
-    print("Starting Asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
 
 # This line ensures the main() function is only called when this file is run directly
 # and not when it is imported as a module
