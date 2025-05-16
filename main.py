@@ -1,4 +1,5 @@
 # This is the main file for the Asteroids game
+import sys
 import pygame
 from constants import *
 from player import Player
@@ -13,14 +14,13 @@ def main():
     updatables = pygame.sprite.Group()
     drawables = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
-    asteroidfielda = pygame.sprite.Group()
 
     Player.containers = (updatables, drawables)
     player = Player(SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2)
     
     Asteroid.containers = (asteroids, updatables, drawables)
     AsteroidField.containers = (updatables)
-    asteroidfield = AsteroidField()
+    asteroid_field = AsteroidField()
 
     dt = 0
 
@@ -32,6 +32,11 @@ def main():
             
         updatables.update(dt)
 
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
+                print ("Game over!")
+                sys.exit(0)
+
         screen.fill("black")
 
         for drawable in drawables:
@@ -39,7 +44,7 @@ def main():
 
         pygame.display.flip() # Refresh the screen
 
-        dt = clock.tick(60) / 1000
+        dt = clock.tick(60) / 1000 # Limit framerate to 60
 
 
 # This line ensures the main() function is only called when this file is run directly
